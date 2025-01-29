@@ -31,6 +31,9 @@ class JsonDict(SortedDict):
     def __init__(self):
         super(JsonDict, self).__init__()
 
+    def __repr__(self):
+        return json.dumps({k: self[k] for k in self}, indent=4, sort_keys=True, ensure_ascii=True)
+    
     def write(self, file_path, **dump_json_kwargs):
         JsonDict.dump_json(self, file_path, **dump_json_kwargs)
 
